@@ -1,3 +1,6 @@
 # Boat_backend
 ## Contains only the backend code for the app
 ### Database and frontend has to be linked before executing with modified Application.properties file
+### Contains various print statements that were used for debugging (edit accordingly).
+
+# Create a NEW BRANCH before modifying the code !!
