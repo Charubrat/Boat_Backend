@@ -68,7 +68,7 @@ public class OtpService {
         return false;
     }
 
-    private String generateNewOTP(){
+    public String generateNewOTP(){
         Random random = new Random();
         int otp = random.nextInt(9000) + 1000;
         return String.valueOf(otp);
