@@ -11,20 +11,20 @@ import com.backend.boatride.service.OtpService;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/users/otp")
+@RequestMapping("/api/v1/auth")
 public class OtpController {
 
     @Autowired
     private OtpService otpService;
 
     @PostMapping("/verify")
-    public ResponseEntity<HttpStatus> verifyOtp(@RequestBody Map<String, Object> requestBody) {
+    public ResponseEntity<String> verifyOtp(@RequestBody Map<String, Object> requestBody) {
         Long userId = Long.parseLong((String) requestBody.get("userId"));
         String enteredOtp = (String) requestBody.get("enteredOtp");
         boolean isOtpValid = otpService.verifyOtp(userId, enteredOtp);
 
         if (isOtpValid) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return ResponseEntity.ok("Verified successfully");
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

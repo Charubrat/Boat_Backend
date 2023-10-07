@@ -18,20 +18,20 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long userId;
 
-    //@Column(name = "first_name") // Specify the column name
+    @Column(name = "first_name") // Specify the column name
     private String firstName;
 
-    //@Column(name = "last_name") // Specify the column name
+    @Column(name = "last_name") // Specify the column name
     private String lastName;
 
-    //@Column(name = "user_email") // Specify the column name
+    @Column(name = "user_email") // Specify the column name
     private String userEmail;
 
     @Getter
-    //@Column(name = "user_password") // Specify the column name
+    @Column(name = "user_password") // Specify the column name
     public String userPassword;
 
-    //@Column(name = "user_phone", nullable = true) // Specify the column name
+    @Column(name = "user_phone", nullable = true) // Specify the column name
     public String userPhone;
 
     public Long getId(){

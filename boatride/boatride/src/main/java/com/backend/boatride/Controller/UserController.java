@@ -38,16 +38,16 @@ public class UserController {
         this.otpService = otpService;
     }
 
-    @PostMapping("/signup1")
-    public ResponseEntity<Long> signUpUser1(@RequestBody User user){
-        try{
-            User newUser = userService.signUpUser(user);
-            Long userId = newUser.getId();
-            return ResponseEntity.ok(userId);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @PostMapping("/signup1")
+//    public ResponseEntity<Long> signUpUser1(@RequestBody User user){
+//        try{
+//            User newUser = userService.signUpUser(user);
+//            Long userId = newUser.getId();
+//            return ResponseEntity.ok(userId);
+//        }catch (Exception e){
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
@@ -78,34 +78,34 @@ public class UserController {
         }
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody LoginRequest loginRequest) {
-
-        boolean isAuthenticated = otpService.authenticateUser(loginRequest.getUserEmailOrUserName(),
-                loginRequest.getPassword());
-
-
-        if (isAuthenticated) {
-            // Fetch the user based on the email/username using the UserService
-            Optional<User> userOptional = userService.findByEmailOrUsername(loginRequest.getUserEmailOrUserName());
-
-            if (userOptional.isPresent()) {
-                User user = userOptional.get();
-                Long userId = user.getId();
-
-                // Return a JSON response containing "Login Successfully" and the userId
-                Map<String, Object> responseMap = new HashMap<>();
-                responseMap.put("message", "Login Successfully");
-                responseMap.put("userId", userId);
-
-                return ResponseEntity.ok(responseMap);
-            } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed" + loginRequest.getPassword());
-            }
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed" + loginRequest.getPassword());
-        }
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<Object> login(@RequestBody LoginRequest loginRequest) {
+//
+//        boolean isAuthenticated = otpService.authenticateUser(loginRequest.getUserEmailOrUserName(),
+//                loginRequest.getPassword());
+//
+//
+//        if (isAuthenticated) {
+//            // Fetch the user based on the email/username using the UserService
+//            Optional<User> userOptional = userService.findByEmailOrUsername(loginRequest.getUserEmailOrUserName());
+//
+//            if (userOptional.isPresent()) {
+//                User user = userOptional.get();
+//                Long userId = user.getId();
+//
+//                // Return a JSON response containing "Login Successfully" and the userId
+//                Map<String, Object> responseMap = new HashMap<>();
+//                responseMap.put("message", "Login Successfully");
+//                responseMap.put("userId", userId);
+//
+//                return ResponseEntity.ok(responseMap);
+//            } else {
+//                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed" + loginRequest.getPassword());
+//            }
+//        } else {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed" + loginRequest.getPassword());
+//        }
+//    }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
