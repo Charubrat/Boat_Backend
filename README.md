@@ -4,3 +4,7 @@
 ### Contains various print statements that were used for debugging (edit accordingly).
 
 # Create a NEW BRANCH before modifying the code !!
+
+## Access the backend with docker image
+
+`docker pull swagatgogoi/boatride-backend`
